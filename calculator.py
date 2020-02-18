@@ -1,9 +1,34 @@
 from tkinter import *
 import math
+"""
+Class to define calculator
+Here methods are called when button in GUI is clicked
+Methods:
+    display: shows the number on entry widget.
+    enternumber: when number button is pressed number is stored and shown.
+    is_equal_to: when '=' solve the given equation and display results.
+    valid_function: take care of operation(add,sub,mul,div) to be carried out with numbers and display total.
+    operation: perform operation as per function.
+    clear_entry: clear the previous inputs
+    all_clear_entry: clear all stored values in calculator
+    opPM(plus minus operator): change sign of integers
+    squareroot: produced sqaure root of current number
+
+"""
 
 class calc():
 
     def __init__(self):
+         """
+        calc init method:
+        we are initializing class and variable changes as per methods
+
+        var:
+            total = stores total value after operaiton
+            curent = stores current displayed number
+            op = stores current operator called
+            result/input_value/check_sum = boolen var which changes after completing their purpose
+        """
         self.total = 0
         self.current = ""
         self.op = ""
@@ -13,11 +38,22 @@ class calc():
     
     
     def display(self,value):
+        """
+        first delete entire displayed value , and than insert current value
+
+        args:
+            value: display current value
+        """
         txtDisplay.delete(0,END)
         txtDisplay.insert(0,value)
 
     
     def enternumber(self,num):
+        """
+        stores and concatinate pressed number
+        arg:
+            num: number button pressed
+        """
         self.result = False
         firstnum = txtDisplay.get()
         secondnum = str(num)
@@ -57,6 +93,12 @@ class calc():
 
     
     def operation(self,op):
+         """
+         performs operation as per given input by calling valid_function
+         
+         arg:
+            op: saves the current operator
+          """
         self.current = float(self.current)
         if self.check_sum :
             self.valid_function()
